@@ -1,7 +1,76 @@
 ## Create Keynote
 
+```
 “Understand the codebase and come up with an informal user story that I can plug into a keynote presentation. Create a file called keynote.md and add the user story there. You can treat each title as a slide. #1 would represent slide 1. and provide a text representation of what would appear in the keynote.”
+```
 
 ## Create Prompt
 
+```
 "Imagine you’re tasked with generating a RESTful API for a simple task management system using your preferred language. The system should support the following functionality: 1. Create, read, update, and delete tasks (CRUD) 2. Each task has a title, description, status, and due_date 3. Tasks are associated with a user (assume basic User model exists) Write the prompt you would use to generate the API scaffold or full implementation."
+```
+
+## Task Management System
+
+```
+Act as a senior backend engineer. Generate a production-quality RESTful API for a simple task management system using Ruby on Rails in API-only mode with PostgreSQL.
+
+Requirements:
+- Build CRUD endpoints for Tasks:
+  - POST /tasks
+  - GET /tasks
+  - GET /tasks/:id
+  - PATCH /tasks/:id
+  - DELETE /tasks/:id
+- Create a basic User model so that everything runs out of the box
+- Each Task belongs_to :user
+- Each Task must have:
+  - title: string
+  - description: text
+  - status: string
+  - due_date: datetime
+  - user_id: foreign key
+- Valid statuses should be restricted to: "pending", "in_progress", "completed"
+
+Implementation details:
+- Generate:
+  1. Migration for tasks table
+  2. Task model with validations and association
+  3. Controller with RESTful actions
+  4. Routes
+  5. JSON request/response examples
+  6. Strong params
+  7. Error handling for validation failures and missing records
+  8. Seed example or sample requests
+- Use clean Rails conventions and keep the code easy to understand.
+- Return proper HTTP status codes:
+  - 201 for created
+  - 200 for successful reads/updates
+  - 204 for delete
+  - 404 for not found
+  - 422 for validation errors
+- Add model validations:
+  - title required
+  - status required and must be one of the allowed values
+  - due_date required
+  - user_id required
+- Include pagination on GET /tasks if reasonable. (10 items per page)
+- Allow filtering tasks by:
+  - user_id
+  - status
+  - due_date
+- Keep authentication out of scope, but structure the code so auth could be added later.
+
+Output format:
+- First show the file structure
+- Then provide the full code for each file
+- Then provide curl examples for every endpoint
+- Then explain briefly how to run the project locally
+- Then include a few example test cases using RSpec
+
+Important:
+- Do not leave placeholders like "implement this later"
+- Produce runnable code
+- Prefer simplicity over overengineering
+- Follow REST best practices
+```
